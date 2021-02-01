@@ -45,8 +45,8 @@ int main()
     ifs.open(userfile.c_str());
     if(!ifs.fail())
     {       // if no file this is first running for this user
-            //	mychecks.load_from_file(ifs);
-	ifs.close();
+        //	mychecks.load_from_file(ifs);
+	    ifs.close();
     }
 
     do{
@@ -91,11 +91,11 @@ int main()
                 //cout<<mychecks.average();
                 break;
             case 0:
-                cout<<"Thank you for using the Checkbook program.\n";
-                cout<<"All alterations to the checkbook will now be saved.\n";
+                cout << "Thank you for using the Checkbook program.\n";
+                cout << "All alterations to the checkbook will now be saved.\n";
                 break;
             default:
-                cout<<"Not a valid choice. Please choose again. \n";
+                cout << "Not a valid choice. Please choose again. \n";
                 break;
         } // bottom of the switch
     } while(choice != 0);
