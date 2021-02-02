@@ -58,24 +58,25 @@ ostream& operator << (ostream& outs, Date d)
 }
 
 //INPUT OPERATOR, OVERLOADED AS A FRIEND
-istream& operator >> (istream& ins, Date d)
+istream& operator >> (istream& ins, Date& d)
 {
     bool flag = false;
     string junk;
-
+    
     ins >> d.month;
-
+    
     //IF AN INVALID MONTH IS DETECTED THROW A bad_month
     if(d.month < 1 || d.month > 12)
     {
         getline(ins, junk); //EAT THE REST OF THE LINE
-        throw(bad_month(d.month);
+        throw(bad_month(d.month));
     }
 
     if(ins.eof()) return ins;
     if(ins.peek() == '/') ins.ignore();
 
     ins >> d.year;
+    
     return ins;
 }
 

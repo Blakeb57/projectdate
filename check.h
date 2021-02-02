@@ -1,13 +1,13 @@
-/***********************************************************************
-    This is the header file for a check class. It holds the information 
-for a single check, which is the check number, the date it was written, 
-to whom it was written and the amount. There are two ways of inputting 
-into the check, the write_check function and the >> operator. There are 
-also two ways of outputting the check, the output function and the << 
-operator.
-    Checks cannot be written for less than $0.01.
-  	John Dolan	Ohio University		September 2019
-************************************************************************/
+
+//This is the header file for a check class. It holds the information 
+//for a single check, which is the check number, the date it was written, 
+//to whom it was written and the amount. There are two ways of inputting 
+//into the check, the write_check function and the >> operator. There are 
+//also two ways of outputting the check, the output function and the << 
+//operator.
+//    Checks cannot be written for less than $0.01.
+//  	John Dolan	Ohio University		September 2019
+
 
 #ifndef CHEESEY
 #define CHEESEY

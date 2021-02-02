@@ -31,21 +31,21 @@ int main()
     ifstream ifs;
     ofstream ofs;
     string user,userfile;
-    int choice;  // user menu choice
-    double depamount;  // amount of a deposit
-    int rmnum;      // Check number to be removed from checkbook
-    string payto_find; // used in listing all checks to a certain entity
+    int choice;             // user menu choice
+    double depamount;       // amount of a deposit
+    int rmnum;              // Check number to be removed from checkbook
+    string payto_find;      // used in listing all checks to a certain entity
 
     cout << "Please enter your user name (No spaces): ";
     cin >>  user;
 
-    Checkbook mychecks; // A default checkbook is constructed
+    Checkbook mychecks;     // A default checkbook is constructed
     userfile = user + ".txt";
 
     ifs.open(userfile.c_str());
     if(!ifs.fail())
-    {       // if no file this is first running for this user
-        //	mychecks.load_from_file(ifs);
+    {                       // if no file this is first running for this user
+        mychecks.load_from_file(ifs);
 	    ifs.close();
     }
 
@@ -54,9 +54,9 @@ int main()
         switch(choice)
         {
             case 1:
-                cout << "Please enter amount of the deposit:$";
+                cout << "Please enter amount of the deposit: $";
                 cin >> depamount;
-                //mychecks.deposit(depamount);
+                mychecks.deposit(depamount);
                 break;
             case 2:
                 //mychecks.write_check(cin);
@@ -68,8 +68,8 @@ int main()
                 //mychecks.show_all(cout);
                 break;
             case 5:
-                cout<<"Enter the Check Number of the Check to be removed:";
-                cin>>rmnum;
+                cout << "Enter the Check Number of the Check to be removed:";
+                cin >> rmnum;
                 //mychecks.remove(rmnum);
                 break;
             case 6:
@@ -88,7 +88,7 @@ int main()
                 //mychecks.show(payto_find);
                 break;
             case 10:
-                //cout<<mychecks.average();
+                //cout << mychecks.average();
                 break;
             case 0:
                 cout << "Thank you for using the Checkbook program.\n";
