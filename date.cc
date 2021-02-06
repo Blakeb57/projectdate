@@ -73,8 +73,18 @@ istream& operator >> (istream& ins, Date& d)
     }
 
     if(ins.eof()) return ins;
-    if(ins.peek() == '/') ins.ignore();
 
+    if(ins.peek() == '/') ins.ignore();
+    ins >> d.day;
+    if(d.day < 1  || d.day > d.daysallowed[d.month])
+    {
+        getline(ins,junk); // eat the rest of the line
+        throw (bad_day(d.month, d.day));
+    }
+
+    if(ins.eof()) return ins;
+    if(ins.peek() == '/') ins.ignore();
+    
     ins >> d.year;
     
     return ins;
@@ -132,4 +142,23 @@ bool operator <= (const Date& d1, const Date& d2)
 bool operator >= (const Date& d1, const Date& d2)
 {
     return (d1 == d2 || d1 > d2);
+}
+
+bool compare(const Date& d1, const Date& d2)
+{
+    if(d1.year < d2.year)
+    {
+        return true;
+    }
+
+    if(d1.year == d2.year && d1.month < d2.month)
+    {
+        return true;
+    }
+
+    if(d1.year == d2.year && d1.month == d2.month && d1.day < d2.day)
+    {
+        return true;
+    }
+    return false;
 }

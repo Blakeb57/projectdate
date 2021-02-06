@@ -6,6 +6,8 @@ below.
 	John Dolan	Ohio University		September 2019
 ******************************************************************/
 #include "check.h"
+#include"checkbook.h"
+
 using namespace std;
 
 Check::Check(Date d, string p, int num,double amt)
@@ -18,24 +20,35 @@ Check::Check(Date d, string p, int num,double amt)
 
 // INPUT AND OUTPUT FUNCTIONS
 void Check::write_check(std::istream& ins)
-{
+{    
     string line;
-    getline(ins, line);
 
-    /*
-    cout << "Please enter the check number for this check: ";
-    ins >> checknum;
-    cout << endl;
-    cout << "Please enter the date of the check: ";
-    ins >> date;
-    cout << endl;
-    cout << "Please enter the name of the person the check is being paid to: ";
-    ins >> payto;
-    cout << endl;
-    cout << "Please enter the amount that the check is being written: ";
-    ins >> amount;
-    cout << endl;
-    */
+    if(&ins == &cin)
+    {
+        cout << "Please enter the check number for this check: ";
+        ins >> checknum;
+        cout << endl;
+        cout << "Please enter the date of the check: ";
+        ins >> date;
+        cout << endl;
+        cout << "Please enter the name of the person the check is being paid to: ";
+        getline(ins, payto);
+        cout << endl;
+        cout << "Please enter the amount that the check is being written: $";
+        ins >> amount;
+        cout << endl;
+
+        cout << checknum << " : " << date << " : " << payto << " : " << amount << endl;
+    }else
+    {
+        ins >> checknum;
+        ins >> date;
+        getline(ins, line);
+        getline(ins, payto);
+        ins >> amount;
+        cout << checknum << " : " << date << " : " << payto << " : " << amount << endl;
+    }
+    
     /* You are to write the implementation of this function to read 
     from the keyboard or a file. Remember to use getline to read the 
     payto.  */
@@ -44,10 +57,17 @@ void Check::write_check(std::istream& ins)
 
 void Check::output(std::ostream& outs)const
 {
-    outs << "Checknumber: " << get_num() << endl;
-    outs << "Date: " << get_date() << endl;
-    outs << "Who the check is made out for: " << get_payto() << endl;
-    outs << "The amount the check is written for: " << get_amount() << endl;
+    if (&outs == &cout){
+        outs << "Checknumber: " << get_num() << endl;
+        outs << "Date: " << get_date() << endl;
+        outs << "Who the check is made out for: " << get_payto() << endl;
+        outs << "The amount the check is written for: $" << get_amount() << endl;
+    } else {
+        outs << get_num() << endl;
+        outs << get_date() << endl;
+        outs << get_payto() << endl;
+        outs << get_amount();
+    }
     /* You are to write the implementation of this function to write 
     to the monitor or to a file. Remember not to put labels into the 
     file.*/

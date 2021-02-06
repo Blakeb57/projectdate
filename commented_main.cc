@@ -43,6 +43,7 @@ int main()
     userfile = user + ".txt";
 
     ifs.open(userfile.c_str());
+
     if(!ifs.fail())
     {                       // if no file this is first running for this user
         mychecks.load_from_file(ifs);
@@ -59,36 +60,36 @@ int main()
                 mychecks.deposit(depamount);
                 break;
             case 2:
-                //mychecks.write_check(cin);
+                mychecks.write_check(cin);
                 break;
             case 3:
-                //cout<<mychecks.get_balance();
+                cout << mychecks.get_balance();
                 break;
             case 4:
-                //mychecks.show_all(cout);
+                mychecks.show_all(cout);
                 break;
             case 5:
                 cout << "Enter the Check Number of the Check to be removed:";
                 cin >> rmnum;
-                //mychecks.remove(rmnum);
+                mychecks.remove(rmnum);
                 break;
             case 6:
-                //mychecks.number_sort();
+                mychecks.number_sort();
                 break;
             case 7:
-                //mychecks.payto_sort();
+                mychecks.payto_sort();
                 break;
             case 8:
-                //mychecks.date_sort();
+                mychecks.date_sort();
                 break;
             case 9:
                 while(cin.peek()=='\n' || cin.peek() == '\r')
                     cin.ignore(); // clear out leftover newlines
                 getline(cin,payto_find);
-                //mychecks.show(payto_find);
+                mychecks.show(payto_find);
                 break;
             case 10:
-                //cout << mychecks.average();
+                cout << mychecks.average();
                 break;
             case 0:
                 cout << "Thank you for using the Checkbook program.\n";
@@ -103,7 +104,7 @@ int main()
 	ofs.open(userfile.c_str());
 	if(!ofs.fail())
     {
-        //mychecks.save(ofs);
+        mychecks.save(ofs);
 	    ofs.close();
 	}
 
