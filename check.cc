@@ -32,6 +32,7 @@ void Check::write_check(std::istream& ins)
         ins >> date;
         cout << endl;
         cout << "Please enter the name of the person the check is being paid to: ";
+        getline(ins, line);
         getline(ins, payto);
         cout << endl;
         cout << "Please enter the amount that the check is being written: $";

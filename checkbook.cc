@@ -10,7 +10,7 @@ using namespace std;
 //CONSTRUCTORS
 Checkbook::Checkbook()
 {
-    next = 2;
+    next = 0;
     balance = 0;
     used = 0;
 }
@@ -31,8 +31,8 @@ void Checkbook::load_from_file(std::istream& ins)
         Checks[used] = tmp;
         used++;
     }
+    next = 1 + used;
 }
-
 
 void Checkbook::deposit(double depamount)
 {
@@ -55,7 +55,7 @@ void Checkbook::write_check(std::istream& ins)
     {
         cout << "Sorry, list capacity for number of checks allowed has been reached" << endl;
     }
-    
+    next = 1 + used;
 }
 
 void Checkbook::show_all(std::ostream& outs)
@@ -64,6 +64,7 @@ void Checkbook::show_all(std::ostream& outs)
     {
         outs << *Checks[i] << endl;
     }
+    outs << "Next available check number: " << next << endl;
 }
 
 void Checkbook::remove(int rmnum)
@@ -92,7 +93,6 @@ void Checkbook::remove(int rmnum)
 void Checkbook::number_sort()
 {
     bool done = false;
-    //int j;
     Check *tmp;
 
     while(!done)
@@ -163,7 +163,7 @@ bool Checkbook::average()
     {
         average += Checks[i]->get_amount();
     }
-    return average;
+    return average/used;
 }
 
 void Checkbook::show(std::string& payto_find)
