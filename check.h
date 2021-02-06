@@ -32,7 +32,7 @@ class Check
         int get_num()const {return checknum;}
 
         // MUTATOR FUNCTION
-        void set_check_num (int n){checknum = n;}
+        void set_check_num (int n){this->checknum = n;}
 
     private:
         int checknum;

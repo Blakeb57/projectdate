@@ -25,9 +25,7 @@ void Check::write_check(std::istream& ins)
 
     if(&ins == &cin)
     {
-        cout << "Please enter the check number for this check: ";
-        ins >> checknum;
-        cout << endl;
+        //;
         cout << "Please enter the date of the check: ";
         ins >> date;
         cout << endl;
@@ -39,7 +37,7 @@ void Check::write_check(std::istream& ins)
         ins >> amount;
         cout << endl;
 
-        cout << checknum << " : " << date << " : " << payto << " : " << amount << endl;
+        cout << get_num() << " : " << get_date() << " : " << get_payto() << " : " << get_amount() << endl;
     }else
     {
         ins >> checknum;
@@ -47,9 +45,9 @@ void Check::write_check(std::istream& ins)
         getline(ins, line);
         getline(ins, payto);
         ins >> amount;
-        cout << checknum << " : " << date << " : " << payto << " : " << amount << endl;
+        cout << get_num() << " : " << get_date() << " : " << get_payto() << " : " << get_amount() << endl;
     }
-    
+
     /* You are to write the implementation of this function to read 
     from the keyboard or a file. Remember to use getline to read the 
     payto.  */
@@ -82,6 +80,9 @@ ostream& operator << (ostream& outs, const Check& c)
 
 istream& operator >> (istream& ins, Check& c)
 {
+    string line;
+    getline(ins, line);
+        c.set_check_num(std::stoi(line));
     c.write_check(ins);
     return ins;
 }

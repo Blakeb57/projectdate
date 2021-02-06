@@ -10,7 +10,7 @@ using namespace std;
 //CONSTRUCTORS
 Checkbook::Checkbook()
 {
-    next = 0;
+    next = 1;
     balance = 0;
     used = 0;
 }
@@ -30,13 +30,17 @@ void Checkbook::load_from_file(std::istream& ins)
         tmp -> write_check(ins);
         Checks[used] = tmp;
         used++;
+        next++;
     }
-    next = 1 + used;
 }
 
 void Checkbook::deposit(double depamount)
 {
-    balance = balance + depamount;
+    for(std::size_t i = 0; i < used; ++i)
+    {
+        balance = balance + depamount;
+        balance = balance - Checks[i]->get_amount();
+    }
     cout << "Your currrent balance: $" << balance << endl;
 }
 
@@ -48,14 +52,15 @@ void Checkbook::write_check(std::istream& ins)
 
     if(used < CAPACITY)
     {
+        tmp -> set_check_num(used+1);
         tmp -> write_check(ins);
         Checks[used] = tmp;
         used++;
+        next++;
     }else
     {
         cout << "Sorry, list capacity for number of checks allowed has been reached" << endl;
     }
-    next = 1 + used;
 }
 
 void Checkbook::show_all(std::ostream& outs)
@@ -83,6 +88,7 @@ void Checkbook::remove(int rmnum)
     {
         used--;
         Checks[index] = Checks[used];
+        next++;
     }else
     {
         cout << rmnum << "The check you were looking for was not found in the list. " << endl;
@@ -168,14 +174,17 @@ bool Checkbook::average()
 
 void Checkbook::show(std::string& payto_find)
 {
+    int total = 0;
     int index = -1;
 
     for(std::size_t i = 0; i < used; ++i)
     {
         if(payto_find == Checks[i] -> get_payto())
         {
+            total += Checks[index]->get_amount();
             index = i;
             cout << *Checks[index] << endl;
+            cout << "Total amount of all checks written to this name: $" << total << endl;
         }
     }
 
