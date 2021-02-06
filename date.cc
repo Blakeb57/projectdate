@@ -143,22 +143,3 @@ bool operator >= (const Date& d1, const Date& d2)
 {
     return (d1 == d2 || d1 > d2);
 }
-
-bool compare(const Date& d1, const Date& d2)
-{
-    if(d1.year < d2.year)
-    {
-        return true;
-    }
-
-    if(d1.year == d2.year && d1.month < d2.month)
-    {
-        return true;
-    }
-
-    if(d1.year == d2.year && d1.month == d2.month && d1.day < d2.day)
-    {
-        return true;
-    }
-    return false;
-}
