@@ -1,3 +1,11 @@
+//This is the header file for a checkbook class. It loads the information from a user's file
+//It then allows the user to write more checks out as long as the check count doesn't 
+//exceed 200 checks. It also allows the file to be sorted by the check number,
+//who the checks are paid to (alphabetically), and can be sorted by the date in which
+//the checks were written. The average amount paid can also be calculated,
+//checks can be removed from the file and money can be depositted into the users account.
+//When the program is ended all changes are saved to the file as well.
+//Blake Boehringer 2/7/21
 #include <iostream>
 #include <ctype.h>
 #include <string>
