@@ -163,7 +163,7 @@ void Checkbook::date_sort()
 
 bool Checkbook::average()
 {
-    int average = 0;
+    double average = 0;
 
     for(std::size_t i = 0; i < used; ++i)
     {
