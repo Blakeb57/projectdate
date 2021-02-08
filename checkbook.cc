@@ -161,15 +161,16 @@ void Checkbook::date_sort()
     }
 }
 
-bool Checkbook::average()
+double Checkbook::average()
 {
     double average = 0;
 
     for(std::size_t i = 0; i < used; ++i)
     {
-        average += Checks[i]->get_amount();
+        average =  average + Checks[i]->get_amount();
+        average = average / used;
     }
-    return average/used;
+    return average;
 }
 
 void Checkbook::show(std::string& payto_find)

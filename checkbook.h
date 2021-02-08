@@ -26,7 +26,7 @@ class Checkbook
         void payto_sort();                                      //sorts alphabetically for who to pay the check/ checks to
         void date_sort();                                       //sorts by the date of the check
         void show(std::string& payto_find);                         //finds all checks written to a certain individual
-        bool average();                                         //finds the average of all checks written
+        double average();                                         //finds the average of all checks written
         void write_check(std::istream& ins);
 
         //ACCESSORS
